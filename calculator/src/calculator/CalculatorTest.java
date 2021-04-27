@@ -29,9 +29,7 @@ public class CalculatorTest {
 	}
 	@Test
 	public void sumOfNumberStartWithDoubleSlash() {
-		assertEquals(6,Calculator.Add("//[***]\\n1***2***3"));
 		assertEquals(3,Calculator.Add("//;\\n1;2"));
-		
 	}
 	@Test
 	public void raiseErrorForNegative() {
@@ -52,6 +50,25 @@ public class CalculatorTest {
 		catch(RuntimeException e) {
 			assertEquals("negatives not allowed: -11",e.getMessage());
 		}
+	}
+	
+	@Test
+	public void ignoreGreaterThan1000() {
+		assertEquals(2,Calculator.Add("//2;1001"));
+	}
+	
+	@Test
+	public void delimitersOfAnyLength() {
+		assertEquals(6,Calculator.Add("//[***]\\n1***2***3"));
+	}
+	
+	@Test
+	public void multipleDelimiters() {
+		assertEquals(6,Calculator.Add("//[*][%]\\n1*2%3"));
+	}
+	@Test
+	public void multipleDelimitersOfLongerLength() {
+		assertEquals(20,Calculator.Add("//[*][%]\\n10*7%3"));
 	}
 
 }

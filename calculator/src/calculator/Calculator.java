@@ -28,10 +28,11 @@ public class Calculator {
 		if(input.startsWith("//")){
 			Pattern pattern = Pattern.compile("\\d+");
             Matcher matcher = pattern.matcher(input);
-            int sum = 0 , val;
+            int sum = 0 ;
+            String s = "";
             while(matcher.find()){
-                val = Integer.parseInt(input.substring(matcher.start(),matcher.end()));
-                sum += val;
+                s = input.substring(matcher.start(),matcher.end());
+                sum += makeLessThan1000(s);
             }
 			return sum;
 		}
@@ -42,10 +43,17 @@ public class Calculator {
 			String[] values = input.split(",");
 			int sum = 0;
 			for(String i:values) {
-				sum += Integer.parseInt(i);
+				sum += makeLessThan1000(i);
 			}
 			return sum;
 		}
-		return Integer.parseInt(input);
+		return makeLessThan1000(input);
+	}
+	
+	public static int makeLessThan1000(String s) {
+		int num = Integer.parseInt(s);
+		if(num > 1000)
+			return 0;
+		return num;
 	}
 }
