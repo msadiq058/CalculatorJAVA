@@ -27,5 +27,10 @@ public class CalculatorTest {
 		assertEquals(6,Calculator.Add("1\n2,3"));
 		assertEquals(7,Calculator.Add("1\n2\n3\n1"));
 	}
+	@Test
+	public void sumOfNumberStartWithDoubleSlash() {
+		assertEquals(6,Calculator.Add("//[***]\\n1***2***3"));
+		assertEquals(3,Calculator.Add("//;\\n1;2"));
+	}
 
 }
