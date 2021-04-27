@@ -2,8 +2,12 @@ package calculator;
 
 public class Calculator {
 	public static int Add(String input) {
+		input = input.trim();
 		if(input.equals("")) {
 			return 0;
+		}
+		if(input.contains("\n")) {
+			input = input.replaceAll("\n", ",");
 		}
 		if(input.contains(",")) {
 			String[] values = input.split(",");
@@ -14,6 +18,5 @@ public class Calculator {
 			return sum;
 		}
 		return Integer.parseInt(input);
-		//return -1;
 	}
 }

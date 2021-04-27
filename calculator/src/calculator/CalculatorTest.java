@@ -22,5 +22,10 @@ public class CalculatorTest {
 	public void sumOfMultipleNumbers() {
 		assertEquals(10,Calculator.Add("1,2,3,4"));
 	}
+	@Test
+	public void sumOfNumbersWithNewLine() {
+		assertEquals(6,Calculator.Add("1\n2,3"));
+		assertEquals(7,Calculator.Add("1\n2\n3\n1"));
+	}
 
 }
