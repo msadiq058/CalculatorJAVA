@@ -9,6 +9,22 @@ public class Calculator {
 		if(input.equals("")) {
 			return 0;
 		}
+		
+		Pattern negPattern = Pattern.compile("-[1-9][0-9]*");
+		Matcher negMatcher = negPattern.matcher(input);
+		
+		if(negMatcher.find()) {
+			StringBuffer exception = new StringBuffer();
+			exception.append("negatives not allowed: ");
+			exception.append(input.substring(negMatcher.start(),negMatcher.end())+" ");
+			while(negMatcher.find()) {
+				exception.append(input.substring(negMatcher.start(),negMatcher.end())+" ");
+			}
+			exception.deleteCharAt(exception.length()-1);
+			throw new ArithmeticException(exception+"");
+		}
+		
+		
 		if(input.startsWith("//")){
 			Pattern pattern = Pattern.compile("\\d+");
             Matcher matcher = pattern.matcher(input);

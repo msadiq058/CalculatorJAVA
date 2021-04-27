@@ -31,6 +31,17 @@ public class CalculatorTest {
 	public void sumOfNumberStartWithDoubleSlash() {
 		assertEquals(6,Calculator.Add("//[***]\\n1***2***3"));
 		assertEquals(3,Calculator.Add("//;\\n1;2"));
+		
+	}
+	@Test
+	public void raiseErrorForNegative() {
+		try {
+			Calculator.Add("//-1,-2");
+			fail("Excetion expected.");
+		}
+		catch(RuntimeException e) {
+			assertEquals("negatives not allowed: -1 -2",e.getMessage());
+		}
 	}
 
 }
