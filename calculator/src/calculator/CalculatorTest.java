@@ -43,5 +43,15 @@ public class CalculatorTest {
 			assertEquals("negatives not allowed: -1 -2",e.getMessage());
 		}
 	}
+	@Test
+	public void raiseErrorForNegative2() {
+		try {
+			Calculator.Add("//;\\\\n-11;2");
+			fail("Excetion expected.");
+		}
+		catch(RuntimeException e) {
+			assertEquals("negatives not allowed: -11",e.getMessage());
+		}
+	}
 
 }
