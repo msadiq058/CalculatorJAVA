@@ -5,6 +5,15 @@ public class Calculator {
 		if(input.equals("")) {
 			return 0;
 		}
-		return -1;
+		if(input.contains(",")) {
+			String[] values = input.split(",");
+			int sum = 0;
+			for(String i:values) {
+				sum += Integer.parseInt(i);
+			}
+			return sum;
+		}
+		return Integer.parseInt(input);
+		//return -1;
 	}
 }
